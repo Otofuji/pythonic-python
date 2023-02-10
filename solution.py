@@ -6,7 +6,8 @@ def print_indices_and_elements(elements) -> None:
     
 def get_even_numbers_between(start: int, end: int) -> list[int]:
     #https://python-3-patterns-idioms-test.readthedocs.io/en/latest/Comprehensions.html
-    sequence = list(range(start, end-1)) #https://stackoverflow.com/questions/18265935/how-do-i-create-a-list-with-numbers-between-two-values
+    end += 1
+    sequence = list(range(start, end)) #https://stackoverflow.com/questions/18265935/how-do-i-create-a-list-with-numbers-between-two-values
     even = [n for n in sequence if n%2 == 0]
     return even
 
