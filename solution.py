@@ -19,7 +19,9 @@ def get_char_set_from(s: str) -> set[str]:
 
 
 def get_perfect_squares_between(start: int, end: int) -> dict[int,int]:
-    return {}
+    perfect_squares = {k:k*k for k in range(end-start)}
+
+    return perfect_squares
 
 
 def filter_even_from(numbers: list[int]) -> list[int]:
