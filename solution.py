@@ -31,20 +31,54 @@ def get_number_or_minus_one(n: int) -> int:
 
 
 def transform_multiples_of_5(numbers: list[int]) -> list[int]:
-    return []
+    return [-1 if n % 2 != 0 else n for n in numbers if n % 5 == 0]
 
 
 def str_lengths(strings: list[str]) -> list[int]:
-    return []
+    return [len(s) for s in strings]
 
 
 def get_fibonacci_type(version: int) -> str:
-    return ''
+    if version == 1:
+        return "generator"
+    elif version == 2:
+        return "list"
 
+def fibonacci1(n):
+    prev = 1
+    curr = 1
+    yield 1
+    for _ in range(n-1):
+        prev, curr = curr, curr + prev
+        yield curr
+
+def fibonacci2(n):
+    result = [1]
+    prev = 1
+    curr = 1
+    for _ in range(n-1):
+        prev, curr = curr, curr + prev
+        result.append(curr)
+    return result
 
 def difference_between_fibonacci1_and_fibonacci2() -> str:
-    return ''
+    import sys
+    import matplotlib.pyplot as plt
+    memory_usage_fib1 = []
+    memory_usage_fib2 = []
 
+    for i in range(1, 1001):
+        memory_usage_fib1.append(sys.getsizeof([f for f in fibonacci1(i)]))
+        memory_usage_fib2.append(sys.getsizeof(fibonacci2(i)))
+
+    plt.plot(memory_usage_fib1, label='fibonacci1')
+    plt.plot(memory_usage_fib2, label='fibonacci2')
+    plt.xlabel('n')
+    plt.ylabel('Memory usage')
+    plt.legend()
+    plt.show()
+
+    return "fibonacci1 uses a generator to lazily generate the sequence one value at a time, which is more memory-efficient than fibonacci2 that stores the entire sequence in a list. However, fibonacci1 can be slower than fibonacci2 for small sequences, due to the overhead of generating values on the fly. For large sequences, fibonacci1 can be faster and more memory-efficient than fibonacci2, because it doesn't need to store the entire sequence in memory at once. Este exercício é alienígena. Muito difícil. Ele foi feito com ajuda do ChatGPT."
 
 class SkipIterator:
     def __init__(self, elements):
