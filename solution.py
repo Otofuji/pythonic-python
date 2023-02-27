@@ -83,30 +83,53 @@ def difference_between_fibonacci1_and_fibonacci2() -> str:
 class SkipIterator:
     def __init__(self, elements):
         self.elements = elements
-        # You can add more code here if you need
+        self.index = 0
+        
+    def __iter__(self):
+        return self
+        
+    def __next__(self):
+        if self.index >= len(self.elements):
+            raise StopIteration()
+            
+        element = self.elements[self.index]
+        self.index += 2
+        return element
 
 
 def my_avg(e1: float, e2: float, *others: tuple[float]) -> float:
-    return -1
+    nums = [e1, e2] + list(others)
+    return sum(nums) / len(nums)
 
 
 def keys_with_different_value() -> list[int]:
-    return []
+    a = dict(zip(range(10), range(10)))
+    b = dict(zip(range(5, 15), range(15, 25)))
+    c1 = {**a, **b}
+    c2 = {**b, **a}
+    
+    keys = []
+    for key in sorted(c1.keys()):
+        if c1[key] != c2[key]:
+            keys.append(key)
+            
+    return keys
 
 
 def print_out_in(*numbers) -> None:
     while len(numbers) > 1:
-        # You should add code here and remove the break
-        break
+        first, *middle, last = numbers
+        print(first, last)
+        numbers = middle
 
     if numbers:
-        # You should add code here
-        pass
+         print(numbers[0])  
 
 
-def append_range(start: int, end: int, step: int=1, to: list[int]=[]):
+def append_range(start: int, end: int, step: int=1, to: list[int]=None):
     # You may add code here
-
+    if to is None:
+        to = []
     # Don't change the code below
     for i in range(start, end, step):
         to.append(i)
@@ -121,10 +144,11 @@ def global_var_func1(n: int):
 
 
 def global_var_func2(n: int):
+    global global_var
     for i in range(n):
         global_var += i
         print(global_var)
 
 
 def value_is_None(value):
-    return value == None
+    return value is None
