@@ -62,23 +62,27 @@ def fibonacci2(n):
     return result
 
 def difference_between_fibonacci1_and_fibonacci2() -> str:
-    import sys
-    import matplotlib.pyplot as plt
-    memory_usage_fib1 = []
-    memory_usage_fib2 = []
+    #import sys
+    #import matplotlib.pyplot as plt
+    #memory_usage_fib1 = []
+    #memory_usage_fib2 = []
 
-    for i in range(1, 1001):
-        memory_usage_fib1.append(sys.getsizeof([f for f in fibonacci1(i)]))
-        memory_usage_fib2.append(sys.getsizeof(fibonacci2(i)))
+    #for i in range(1, 1001):
+    #    memory_usage_fib1.append(sys.getsizeof([f for f in fibonacci1(i)]))
+    #    memory_usage_fib2.append(sys.getsizeof(fibonacci2(i)))
 
-    plt.plot(memory_usage_fib1, label='fibonacci1')
-    plt.plot(memory_usage_fib2, label='fibonacci2')
-    plt.xlabel('n')
-    plt.ylabel('Memory usage')
-    plt.legend()
-    plt.show()
+    #plt.plot(memory_usage_fib1, label='fibonacci1')
+    #plt.plot(memory_usage_fib2, label='fibonacci2')
+    #plt.xlabel('n')
+    #plt.ylabel('Memory usage')
+    #plt.legend()
+    #plt.show()
+
+    #tudo comentado para passar no teste do site
 
     return "fibonacci1 uses a generator to lazily generate the sequence one value at a time, which is more memory-efficient than fibonacci2 that stores the entire sequence in a list. However, fibonacci1 can be slower than fibonacci2 for small sequences, due to the overhead of generating values on the fly. For large sequences, fibonacci1 can be faster and more memory-efficient than fibonacci2, because it doesn't need to store the entire sequence in memory at once. Este exercício é alienígena. Muito difícil. Ele foi feito com ajuda do ChatGPT."
+
+    #depois Andrew explicou
 
 class SkipIterator:
     def __init__(self, elements):
